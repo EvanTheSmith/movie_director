@@ -5,7 +5,7 @@ class UsersController < ApplicationController
     
   def create # Sign Up A New User Using Local Sign Up Page
   @user = User.new(user_params)
-    if @user && @user.save
+    if @user.save
       session[:user_id] = @user.id
       redirect_to root_path
     else
