@@ -1,0 +1,18 @@
+<div class="login_box">
+<p>Welcome to my app. Login below:</p>
+
+<%= form_for :user do |f| %>
+    <%= f.label :name %>
+    <%= f.text_field :name %><br />
+  
+    <%= f.label :password %>:
+    <%= f.password_field :password %><br />
+  
+    <%= f.submit %>
+<% end %>
+
+<br />
+
+<%= link_to 'Login with Facebook', '/auth/facebook', class: "fb_button" %>
+
+</div>
