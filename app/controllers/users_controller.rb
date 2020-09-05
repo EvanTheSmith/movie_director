@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
-  # def new
-  # @user = User.new
-  # end
+  def new
+  @user = User.new
+  end
     
   def create # Sign Up A New User Using Local Sign Up Page
   @user = User.new(user_params)

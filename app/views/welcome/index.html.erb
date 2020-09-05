@@ -5,17 +5,9 @@
 <% else %>
 <p>Welcome to my app. Sign Up below:</p>
 
-<%= form_for :user do |f| %>
-    <%= f.label :username %>
-    <%= f.text_field :username %><br />
-  
-    <%= f.label :password %>:
-    <%= f.password_field :password %><br />
-  
-    <%= f.submit "Sign Up" %>
-<% end %>
+Click Here: <% link_to "Sign Up", new_user_path %>
 
-<br />
+<br /><br /><br />
 
 <%= link_to 'Login with Facebook', '/auth/facebook', class: "fb_button" %>
 <% end %>
