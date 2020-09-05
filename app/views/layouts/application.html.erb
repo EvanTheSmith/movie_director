@@ -12,7 +12,7 @@
   <body>
 
   <% flash.keys.each do |type| %>
-    <div class="flash_<%= type %>">
+    <div style="color:red" class="flash_<%= type %>">
       <%= flash[type] %>
     </div>
   <% end %>
