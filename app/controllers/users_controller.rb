@@ -9,8 +9,13 @@ class UsersController < ApplicationController
       session[:user_id] = @user.id
       redirect_to root_path
     else
-      flash[:error] = "Error! "+@user.errors.full_messages.join(', ')
-      redirect_to root_path
+      if User.find_by(username: @user.username).fb_id
+        flash[:error] = "Error! This username was used previously with a Facebook sign up."
+        redirect_to new_user_path
+      else
+        flash[:error] = "Error! "+@user.errors.full_messages.join(', ')
+        redirect_to new_user_path
+      end
     end
   end
 
