@@ -7,7 +7,7 @@ def not_already_exist_via_fb
  @user = User.find_by(:username => username)
   if @user && @user.fb_id
    errors.delete(:username)
-   errors.add(:user, "already registered via Facebook.")
+   errors.add(:user, "must login via Facebook.")
   end
 end
 
