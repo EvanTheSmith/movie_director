@@ -1,6 +1,6 @@
 class FacebookController < ApplicationController
   
-    def create
+    def create # Facebook sign in, sign up and username registration
         if auth && @user = User.find_by(fb_id: auth['uid']) # If User has previously signed up via Facebook
           session[:user_id] = @user.id
           redirect_to root_path
