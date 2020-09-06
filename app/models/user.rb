@@ -4,9 +4,10 @@ validate :not_already_exist_via_fb
 has_secure_password
 
 def not_already_exist_via_fb
- @user = User.find_by(username: username)
+ @user = User.find_by(:username => username)
   if @user && @user.fb_id
-   errors.add(:username, "already registered via Facebook.")
+   errors.delete(:username)
+   errors.add(:user, "already registered via Facebook.")
   end
 end
 
