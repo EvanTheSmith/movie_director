@@ -2,9 +2,14 @@ Rails.application.routes.draw do
 root 'welcome#index'
 
 # Local sign up routes
-resources :users, only: [:new, :create]
+get '/signup' => 'users#new'                        # Local Sign Up Form
+post '/signup' => 'users#create'                    # Local Signup Post Path
 
-# Facebook sign up routes
-get '/auth/facebook/callback' => 'sessions#create' # Sign up from Facebook
-post '/sessions' => 'sessions#create' # Submit username after Facebook sign up
+# Local log in routes
+get '/login' => 'sessions#new'                      # Log In Form
+post '/login' => 'sessions#create'                  # Log In Post Path (NOTE: same route as Facebook login)
+
+# Facebook log in routes
+get '/auth/facebook/callback' => 'facebook#create'  # Sign in from Facebook
+post '/fb_login' => 'facebook#create'               # Setup username after Facebook sign in
 end
