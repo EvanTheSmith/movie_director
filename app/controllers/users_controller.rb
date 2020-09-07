@@ -1,8 +1,10 @@
 class UsersController < ApplicationController
   def new_signup
+    @user = User.new
   end
 
   def new_login
+    @user = User.new
   end
     
   def create_signup # Local Signup Post Path
@@ -12,21 +14,21 @@ class UsersController < ApplicationController
     redirect_to root_path
     else
     flash[:error] = "Error! "+@user.errors.full_messages.join(' + ')
-    redirect_to signup_path
+    render "new_signup"
     end
   end
 
   def create_login # Local Log In Post Path
-    user = User.find_by(username: user_params[:username])
-     if user && user.authenticate(user_params[:password])
-      session[:user_id] = user.id
+    @user = User.find_by(username: user_params[:username])
+     if @user && @user.authenticate(user_params[:password])
+      session[:user_id] = @user.id
       redirect_to root_path
      else
-      new_user = User.new(user_params)
-      new_user.valid?
-      new_user.errors.delete(:username) if user # Clear "Username already taken" error message if user was found
-      flash[:error] = "Error! "+new_user.errors.full_messages.join(' + ')
-      redirect_to login_path
+      @user = User.new(user_params)
+      @user.valid?
+      @user.errors.delete(:username) if User.find_by(username: user_params[:username])
+      flash[:error] = "Error! "+@user.errors.full_messages.join(' + ')
+      render "new_login"
      end
   end
 
