@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  before_action :cant_be_logged_in
+
   def new_signup
     @user = User.new
   end
@@ -30,6 +32,11 @@ class UsersController < ApplicationController
       flash[:error] = "Error! "+@user.errors.full_messages.join(' + ')
       render "new_login"
      end
+  end
+
+  def destroy
+    session.delete :user_id
+    redirect_to root_path
   end
 
   private 
