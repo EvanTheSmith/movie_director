@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :cant_be_logged_in
+  before_action :cant_be_logged_in, except: :destroy
 
   def new_signup
     @user = User.new
