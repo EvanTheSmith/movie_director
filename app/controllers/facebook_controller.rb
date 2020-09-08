@@ -9,13 +9,16 @@ class FacebookController < ApplicationController
           @user.password = SecureRandom.hex
           if @user.save
             session[:user_id] = @user.id
+            flash[:error] = nil
             redirect_to root_path
           else
             flash[:error] = "Error! "+@user.errors.full_messages.join(', ')
+            @fb_name = user_params[:fb_name]
             render "username"
           end
         else # If user has never signed up with Facebook
-          @user = User.new(fb_id: auth['uid'], fb_name: auth['info']['name'])
+          @user = User.new(fb_id: auth['uid'])
+          @fb_name = auth['info']['name']
           render "username"
         end
     end

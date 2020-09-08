@@ -1,11 +1,12 @@
-<p> <%= @user.fb_name %>, please complete your registration by selecting a username: </p>
+<p> <%= @fb_name %>, please complete your registration by selecting a username: </p>
 
 <%= form_for @user, :url => '/fb_login' do |f| %>
     <%= f.hidden_field :fb_id, :value => @user.fb_id %>
+    <%= f.hidden_field :fb_name, :value => @fb_name %>
 
     <%= f.label :username %>
     <%= f.text_field :username %><br />
-
+    <br />
     <%= f.submit "Complete Sign Up" %>
 <% end %>
 
