@@ -9,7 +9,6 @@ class FacebookController < ApplicationController
           @user.password = SecureRandom.hex
           if @user.save
             session[:user_id] = @user.id
-            flash[:error] = nil
             redirect_to root_path
           else
             flash[:error] = "Error! "+@user.errors.full_messages.join(', ')
