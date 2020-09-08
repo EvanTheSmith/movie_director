@@ -14,6 +14,7 @@ ActiveRecord::Schema.define(version: 2020_09_04_083253) do
 
   create_table "users", force: :cascade do |t|
     t.string "username"
+    t.string "fb_name"
     t.integer "fb_id"
     t.string "password_digest"
     t.datetime "created_at", precision: 6, null: false

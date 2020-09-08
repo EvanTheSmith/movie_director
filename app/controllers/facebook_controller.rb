@@ -15,10 +15,14 @@ class FacebookController < ApplicationController
             render "username"
           end
         else # If user has never signed up with Facebook
-          @user = User.new(fb_id: auth['uid'])
-          @fb_name = auth['info']['name']
+          @user = User.new(fb_id: auth['uid'], fb_name: auth['info']['name'])
           render "username"
         end
+    end
+
+    def redirect
+      flash[:error] = "Error! User refreshed page."
+      redirect_to login_path
     end
   
     private
