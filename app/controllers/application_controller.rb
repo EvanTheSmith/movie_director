@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
     # Prevent CSRF attacks by raising an exception.
     protect_from_forgery with: :exception
-    helper_method :current_user, :logged_in?, :cant_be_logged_in, :clear_errors
+    helper_method :current_user, :logged_in?, :cant_be_logged_in
 
     private
     def current_user
@@ -14,9 +14,5 @@ class ApplicationController < ActionController::Base
 
     def cant_be_logged_in
       redirect_to root_path if logged_in?
-    end
-
-    def clear_errors
-      flash[:error] = nil
     end
 end

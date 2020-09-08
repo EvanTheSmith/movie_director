@@ -1,5 +1,5 @@
 class WelcomeController < ApplicationController
     def index
-    clear_errors
+    flash[:error] = nil
     end
 end
