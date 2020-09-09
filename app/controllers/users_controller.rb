@@ -44,12 +44,12 @@ class UsersController < ApplicationController
 
   def login_errors
    @user = User.new(user_params)
-   @user.valid?
-   @user.errors.delete(:username) if User.find_by(username: user_params[:username])
-   @user.errors.add(:user, "not found") if !user_params[:username].empty? && !User.find_by(username: user_params[:username])
-   @user.errors.add(:password) if @user.errors[:password].empty? && User.find_by(username: user_params[:username])
-    if fb_user = User.find_by(username: user_params[:username])
-    @user.errors.delete(:password) if fb_user.fb_id
+   @user.valid? # add normal errors from User model
+   @user.errors.delete(:username) if User.find_by(username: user_params[:username]) # don't check if "username taken"
+   @user.errors.add(:user, "not found") if !user_params[:username].empty? && !User.find_by(username: user_params[:username]) # add error if local-login user doesn't exist
+   @user.errors.add(:password) if @user.errors[:password].empty? && User.find_by(username: user_params[:username]) # confirm if password is invalid for known local users
+    if fb_user = User.find_by(username: user_params[:username]) # dont password error for Facebook users
+    @user.errors.delete(:password) if fb_user.fb_id 
     end
   end
 
