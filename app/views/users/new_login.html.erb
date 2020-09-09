@@ -1,3 +1,5 @@
+<div class="login_box">
+
 <%= form_for @user, url: '/login' do |f| %>
     <div>
     <%= f.label :username %>
@@ -15,3 +17,5 @@
 <br />
 
 <%= link_to 'Login with Facebook', '/auth/facebook', class: "fb_button" %>
+
+</div>
