@@ -28,7 +28,7 @@ class UsersController < ApplicationController
      else
       @user = User.new(user_params)
       @user.valid?
-      @user.errors.delete(:username) if User.find_by(username: user_params[:username])
+      extra_login_validations
       flash[:error] = "Error! "+@user.errors.full_messages.join(' + ')
       render "new_login"
      end
@@ -42,5 +42,15 @@ class UsersController < ApplicationController
   private 
   def user_params
   params.require(:user).permit(:username, :password)
-  end  
+  end
+
+  def extra_login_validations
+   @user.errors.delete(:username) if User.find_by(username: user_params[:username])
+   @user.errors.add(:user, "not found") if !user_params[:username].empty? && !User.find_by(username: user_params[:username])
+   @user.errors.add(:password) if @user.errors[:password].empty? && User.find_by(username: user_params[:username])
+    if fb_user = User.find_by(username: user_params[:username])
+    @user.errors.delete(:password) if fb_user.fb_id
+    end
+  end
+
 end
