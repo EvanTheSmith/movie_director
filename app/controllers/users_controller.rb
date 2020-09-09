@@ -26,9 +26,7 @@ class UsersController < ApplicationController
       session[:user_id] = @user.id
       redirect_to root_path
      else
-      @user = User.new(user_params)
-      @user.valid?
-      extra_login_validations
+      login_errors
       flash[:error] = "Error! "+@user.errors.full_messages.join(' + ')
       render "new_login"
      end
@@ -44,7 +42,9 @@ class UsersController < ApplicationController
   params.require(:user).permit(:username, :password)
   end
 
-  def extra_login_validations
+  def login_errors
+   @user = User.new(user_params)
+   @user.valid?
    @user.errors.delete(:username) if User.find_by(username: user_params[:username])
    @user.errors.add(:user, "not found") if !user_params[:username].empty? && !User.find_by(username: user_params[:username])
    @user.errors.add(:password) if @user.errors[:password].empty? && User.find_by(username: user_params[:username])
