@@ -1,20 +1,9 @@
 class FacebookController < ApplicationController
   
     def create # Facebook sign in, sign up and username registration
-        if auth && @user = User.find_by(fb_id: auth['uid']) # If User has previously signed up via Facebook
+        if @user = User.find_by(fb_id: auth['uid']) # If User has previously signed up via Facebook
           session[:user_id] = @user.id
           redirect_to root_path
-        elsif params[:user] # If User just signed in with Facebook and submitted a Username
-          @user = User.new(user_params)
-          @user.password = SecureRandom.hex
-          if @user.save
-            session[:user_id] = @user.id
-            redirect_to root_path
-          else
-            flash[:error] = "Error! "+@user.errors.full_messages.join(', ')
-            @fb_name = user_params[:fb_name]
-            render "username"
-          end
         else # If user has never signed up with Facebook
           @user = User.new(fb_id: auth['uid'])
           @fb_name = auth['info']['name']
@@ -22,7 +11,19 @@ class FacebookController < ApplicationController
         end
     end
 
-    def redirect
+    def username # post path to complete Facebook registration
+      @user = User.new(user_params)
+      @user.password = SecureRandom.hex
+      if @user.save
+        session[:user_id] = @user.id
+        redirect_to root_path
+      else
+        flash[:error] = "Error! "+@user.errors.full_messages.join(', ')
+        @fb_name = user_params[:fb_name]
+      end
+    end
+
+    def dont_refresh
       flash[:error] = "Error! User refreshed page."
       redirect_to login_path
     end
