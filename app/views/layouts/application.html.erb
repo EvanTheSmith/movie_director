@@ -8,8 +8,24 @@
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
   <body>
+
+  <div id="wrapper">
+
+  <ul id="navbar">
+  <li><a href="/">Home</a></li>
+  <li><a href="#">Thing1</a></li>
+  <li><a href="#">Thing2</a></li>
+    <% if logged_in? %>
+    <li>
+
+    <%= form_tag(logout_path) do %>
+    <%= button_tag "Logout" %>
+    <% end %>
+
+    </li>
+    <% end %>
+  </ul>
 
   <% flash.keys.each do |type| %>
     <div style="color:red" class="flash_<%= type %>">
@@ -18,5 +34,8 @@
   <% end %>
   
     <%= yield %>
+
+    </div>
+    
   </body>
 </html>
