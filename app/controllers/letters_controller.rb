@@ -1,5 +1,6 @@
 class LettersController < ApplicationController
     before_action :confirm_user, only: [:show]
+    before_action :must_be_logged_in
 
     def index
      @letters = Letter.all # this isn't done yet
@@ -13,6 +14,6 @@ class LettersController < ApplicationController
     private
 
     def confirm_user
-     return head(:forbidden) unless current_user == Letter.find(params[:id]).user
+     return head(:forbidden) unless Letter.find(params[:id]).user == current_user
     end
 end

@@ -14,9 +14,9 @@
 
   <ul id="navbar">
   <li><a href="/">Home</a></li>
-  <li><a href="#">Thing1</a></li>
-  <li><a href="#">Thing2</a></li>
     <% if logged_in? %>
+    <li><a href="/letters">Letters</a></li>
+    <li><a href="/penpals">Penpals</a></li>
     <li>
 
     <%= form_tag(logout_path) do %>
