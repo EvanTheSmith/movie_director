@@ -3,7 +3,11 @@ class LettersController < ApplicationController
     before_action :must_be_logged_in
 
     def index
-     @letters = Letter.all # this isn't done yet
+      if params.include?(:penpal_id)
+      @letters = Letter.by_penpal(params[:penpal_id])
+      else
+      @letters = Letter.all
+      end
     end
 
     def show

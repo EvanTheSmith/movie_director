@@ -2,6 +2,8 @@ class Letter < ApplicationRecord
 belongs_to :user
 belongs_to :penpal
 
-scope :my_letters, -> { where(user: User.find_by_id(1)) } # This is not working lol
+def self.by_penpal(penpal_id)
+where(penpal: penpal_id)
+end
 
 end
