@@ -13,6 +13,7 @@
 ActiveRecord::Schema.define(version: 2020_09_10_092756) do
 
   create_table "letters", force: :cascade do |t|
+    t.string "title"
     t.string "message"
     t.integer "user_id"
     t.integer "penpal_id"
