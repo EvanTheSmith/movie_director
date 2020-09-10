@@ -26,7 +26,9 @@ class UsersController < ApplicationController
       session[:user_id] = @user.id
       redirect_to root_path
      else
-      login_errors
+      @user = User.new(user_params)
+      @user.valid?
+      @user.add_login_errors(user_params)
       flash[:error] = "Error! "+@user.errors.full_messages.join(' + ')
       render "new_login"
      end
