@@ -3,6 +3,9 @@ validates :username, presence: true, uniqueness: true
 has_secure_password
 validate :not_created_by_fb
 
+has_many :letters
+has_many :penpals, through: :letters
+
 def not_created_by_fb
  user = User.find_by(:username => username)
  if user && user.fb_id
