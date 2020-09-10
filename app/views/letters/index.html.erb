@@ -1,0 +1,5 @@
+<ul>
+<% @letters.each do |letter| %>
+    <li>Message: <%= letter.message %> / Penpal: <%= letter.penpal.name %> / </li>
+<% end %>
+</ul>
