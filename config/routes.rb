@@ -12,4 +12,11 @@ post '/logout' => 'users#destroy'                   # Log Out
 get '/auth/facebook/callback' => 'facebook#create'  # Sign in from Facebook
 get '/fb_login' => 'facebook#dont_refresh'          # Cannot refresh Facebook Username Selection page
 post '/fb_login' => 'facebook#username'             # Setup username after Facebook sign in
+
+# Penpal and Letter Routes
+resources :penpals, only: [:index, :show] do
+ resources :letters, only: [:show, :index]
+end
+get '/letters' => 'letters#index'
+
 end
