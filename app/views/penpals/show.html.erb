@@ -3,4 +3,7 @@
  <li> Age: <%= @penpal.age %> </li>
  <li> Frequency: <%= @penpal.frequency %> </li>
  <li> <%= "Interest".pluralize(@penpal.interests.count) %>: <%= @penpal.interests.collect { |interest| interest.name }.join(", ") %> </li>
+ <% if !@letters.empty? %>
+ <li> <%= link_to "Letters", penpal_letters_url(@penpal) %> </li>
+ <% end %>
 </ul>

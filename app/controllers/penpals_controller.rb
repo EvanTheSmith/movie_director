@@ -7,6 +7,7 @@ class PenpalsController < ApplicationController
 
     def show
      @penpal = Penpal.find(params[:id])
+     @letters = @penpal.letters.where(user: current_user)
     end
     
 end
