@@ -4,9 +4,9 @@ class LettersController < ApplicationController
 
     def index
       if params.include?(:penpal_id)
-      @letters = Letter.by_penpal(params[:penpal_id])
+       @letters = Letter.by_user(current_user).by_penpal(params[:penpal_id])
       else
-      @letters = Letter.all
+       @letters = Letter.by_user(current_user)
       end
     end
 

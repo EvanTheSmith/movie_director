@@ -1,5 +1,11 @@
-<ul>
-<% @letters.each do |letter| %>
-    <li>Message: <%= letter.message %> / Penpal: <%= letter.penpal.name %> / </li>
+<p>By default, this page shows all letters you have sent. Please use the filter to specifcy a specific penpal.</p>
+
+<% unless @letters.empty? %>
+  <ul>
+  <% @letters.each do |letter| %>
+  <li>Title: <%= link_to letter.title, penpal_letter_url(letter.penpal, letter) %> / Penpal: <%= link_to letter.penpal.name, letter.penpal %></li>
+  <% end %>
+  </ul>
+<% else %>
+  <p>You have no letters to display.</p>
 <% end %>
-</ul>

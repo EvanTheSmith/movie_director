@@ -1,0 +1,6 @@
+<ul>
+ <li> Name: <%= @penpal.name %> </li>
+ <li> Age: <%= @penpal.age %> </li>
+ <li> Frequency: <%= @penpal.frequency %> </li>
+ <li> "Topic".pluralize(@penpal.interests): <%= @penpal.interests.collect { |interest| interest.name }.join(", ") %> </li>
+</ul>

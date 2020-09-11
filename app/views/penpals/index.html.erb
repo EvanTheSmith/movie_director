@@ -1,0 +1,11 @@
+<p>This page shows all penpals registered on our Web site.</p>
+
+<% unless @penpals.empty? %>
+  <ul>
+  <% @penpals.each do |penpal| %>
+  <li>Name: <%= link_to penpal.name, penpal %> </li>
+  <% end %>
+  </ul>
+<% else %>
+  <p>There are no registered penpals.</p>
+<% end %>
