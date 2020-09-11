@@ -1,6 +1,6 @@
 class FacebookController < ApplicationController
   
-    def create # Facebook sign in, sign up and username registration
+    def create # Facebook sign in OR sign up
         if @user = User.find_by(fb_id: auth['uid']) # If User has previously signed up via Facebook
           session[:user_id] = @user.id
           redirect_to root_path
@@ -18,7 +18,7 @@ class FacebookController < ApplicationController
         session[:user_id] = @user.id
         redirect_to root_path
       else
-        flash[:error] = "Error! "+@user.errors.full_messages.join(', ')
+        flash_errors(@user)
         @fb_name = user_params[:fb_name]
       end
     end

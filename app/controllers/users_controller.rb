@@ -15,7 +15,7 @@ class UsersController < ApplicationController
     session[:user_id] = @user.id
     redirect_to root_path
     else
-    flash[:error] = "Error! "+@user.errors.full_messages.join(' + ')
+    flash_errors(@user)
     render "new_signup"
     end
   end
@@ -29,7 +29,7 @@ class UsersController < ApplicationController
       @user = User.new(user_params)
       @user.valid?
       @user.add_login_errors(user_params)
-      flash[:error] = "Error! "+@user.errors.full_messages.join(' + ')
+      flash_errors(@user)
       render "new_login"
      end
   end

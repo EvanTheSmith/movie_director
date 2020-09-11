@@ -5,6 +5,10 @@ class ApplicationController < ActionController::Base
 
     private
 
+    def flash_errors(obj)
+    flash[:error] = "Error".pluralize(obj.errors.count)+"! "+obj.errors.full_messages.join(' + ')
+    end
+
     # Before Actions:
 
     def cant_be_logged_in
