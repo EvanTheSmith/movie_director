@@ -1,8 +1,8 @@
-t1 = Topic.create(name: "Scrapbooking")
-t2 = Topic.create(name: "Gardening")
-t3 = Topic.create(name: "Reading")
-t4 = Topic.create(name: "Quilting")
-t5 = Topic.create(name: "Bingo")
+t1 = Interest.create(name: "Scrapbooking")
+t2 = Interest.create(name: "Gardening")
+t3 = Interest.create(name: "Reading")
+t4 = Interest.create(name: "Quilting")
+t5 = Interest.create(name: "Bingo")
 
 pp1 = Penpal.create(name: "Mabel Addington", age: 83, frequency: "Monthly")
 pp1.interests << t1
