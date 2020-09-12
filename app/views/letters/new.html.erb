@@ -3,9 +3,11 @@
 <%= form_for @letter, url: penpal_letters_path(@penpal.id) do |f| %>
     <%= f.hidden_field :penpal_id, :value => @penpal.id %>
     <%= f.hidden_field :user_id, :value => current_user.id %>
+
     <%= f.label :title %>:
     <%= f.text_field :title %><br />
     <%= f.label :message %>:
     <%= f.text_field :message %><br />
+    
     <%= f.submit "Send Letter" %>
 <% end %>

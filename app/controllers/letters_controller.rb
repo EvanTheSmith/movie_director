@@ -23,7 +23,13 @@ class LettersController < ApplicationController
 
     def create
      @letter = Letter.new(letter_params)
-      byebug
+     if @letter.save
+      redirect_to penpal_letter_url(@letter.penpal, @letter)
+     else
+      flash_errors(@letter)
+      @penpal = @letter.penpal
+      render :new
+     end
     end
 
     private
