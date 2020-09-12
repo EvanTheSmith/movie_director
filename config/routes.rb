@@ -14,9 +14,11 @@ get '/fb_login' => 'facebook#dont_refresh'          # Cannot refresh Facebook Us
 post '/fb_login' => 'facebook#username'             # Setup username after Facebook sign in
 
 # Penpal and Letter Routes
+# Nested
 resources :penpals, only: [:index, :show] do
- resources :letters, only: [:show, :index]
+ resources :letters, only: [:show, :index, :new, :create]
 end
+# Not Nested
 get '/letters' => 'letters#index'
 
 end

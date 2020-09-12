@@ -16,9 +16,23 @@ class LettersController < ApplicationController
      @letter = Letter.find(params[:id])
     end
 
+    def new
+     @letter = Letter.new
+     @penpal = Penpal.find(params[:penpal_id])
+    end
+
+    def create
+     @letter = Letter.new(letter_params)
+      byebug
+    end
+
     private
 
     def confirm_user
      return head(:forbidden) unless Letter.find(params[:id]).user == current_user
+    end
+
+    def letter_params
+      params.require(:letter).permit(:title, :message, :user_id, :penpal_id)
     end
 end
