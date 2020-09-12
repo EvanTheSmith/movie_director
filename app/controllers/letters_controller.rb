@@ -5,8 +5,10 @@ class LettersController < ApplicationController
     def index
       if params.include?(:penpal_id)
        @penpals = current_user.penpals.by_penpal(params[:penpal_id]).uniq
+       @empty_message = "You have not sent any letters to #{Penpal.find(params[:penpal_id]).first_name}."
       else
        @penpals = current_user.penpals.uniq
+       @empty_message = "You have not sent any letters."
       end
     end
 
