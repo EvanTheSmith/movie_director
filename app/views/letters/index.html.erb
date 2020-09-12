@@ -1,9 +1,12 @@
 <p>By default, this page shows all letters you have sent. Please use the filter to specifcy a penpal.</p>
 
-<% unless @letters.empty? %>
+<% unless @penpals.empty? %>
   <ul>
-  <% @letters.each do |letter| %>
-  <li>Title: <%= link_to letter.title, penpal_letter_url(letter.penpal, letter) %> / Penpal: <%= link_to letter.penpal.name, letter.penpal %></li>
+  <% @penpals.each do |penpal| %>
+  <li> Letters sent to <%= penpal.name %></li>
+    <% penpal.letters.each do |letter| %>
+    <li>Title: <%= link_to letter.title, penpal_letter_url(penpal, letter) %> </li>
+    <% end %>
   <% end %>
   </ul>
 <% else %>

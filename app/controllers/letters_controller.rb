@@ -4,9 +4,9 @@ class LettersController < ApplicationController
 
     def index
       if params.include?(:penpal_id)
-       @penpals = Penpal.by_user(current_user).by_penpal(params[:penpal_id])
+       @penpals = current_user.penpals.by_penpal(params[:penpal_id]).uniq
       else
-       @penpals = Penpal.by_user(current_user)
+       @penpals = current_user.penpals.uniq
       end
     end
 

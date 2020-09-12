@@ -5,6 +5,10 @@ has_many :users, through: :letters
 has_many :penpal_interests
 has_many :interests, through: :penpal_interests
 
+def self.by_penpal(penpal_id)
+ where(id: penpal_id)
+end
+
 def letters_from_me(me)
  letters.where(user: me)
 end
