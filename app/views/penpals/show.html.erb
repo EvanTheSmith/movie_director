@@ -6,4 +6,5 @@
  <% if !@letters.empty? %>
  <li> <%= link_to "Letters with #{@penpal.first_name}", penpal_letters_url(@penpal) %> </li>
  <% end %>
+ <li><%= link_to "Send Letter to #{@penpal.first_name}", new_penpal_letter_url(@penpal) %> </li>
 </ul>
