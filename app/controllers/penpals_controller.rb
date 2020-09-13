@@ -15,6 +15,14 @@ class PenpalsController < ApplicationController
     end
 
     def create
+    @penpal = Penpal.new(penpal_params)
+    byebug
+    end
+
+    private
+
+    def penpal_params
+    params.require(:penpal).permit(:name, :age, :frequency, interest_ids:[])
     end
     
 end

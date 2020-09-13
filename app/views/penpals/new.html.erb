@@ -1,17 +1,17 @@
 <p> New penpal registration </p>
 
 <%= form_for @penpal do |f| %>
-    <%= f.hidden_field :user_id, :value => current_user.id %>
 
     <%= f.label :name %>:
     <%= f.text_field :name %><br />
     <%= f.label :age %>:
     <%= f.text_field :age %><br />
+
     <%= f.label :frequency %>:
-    <%= f.text_field :frequency %><br />
-    
+    <%= f.collection_select :frequency, ['Daily', 'Weekly', 'Monthly', 'Yearly'], :to_s, :to_s %><br />
+
+    <%= f.label :interest_ids, "Interests (pick at least one)" %>:<br />
+    <%= f.collection_check_boxes(:interest_ids, Interest.all, :id, :name) %><br />
     
     <%= f.submit "Register Penpal" %>
 <% end %>
-
-<%# url: penpal_letters_path(@penpal.id) %>
