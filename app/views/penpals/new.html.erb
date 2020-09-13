@@ -1,0 +1,17 @@
+<p> New penpal registration </p>
+
+<%= form_for @penpal do |f| %>
+    <%= f.hidden_field :user_id, :value => current_user.id %>
+
+    <%= f.label :name %>:
+    <%= f.text_field :name %><br />
+    <%= f.label :age %>:
+    <%= f.text_field :age %><br />
+    <%= f.label :frequency %>:
+    <%= f.text_field :frequency %><br />
+    
+    
+    <%= f.submit "Register Penpal" %>
+<% end %>
+
+<%# url: penpal_letters_path(@penpal.id) %>

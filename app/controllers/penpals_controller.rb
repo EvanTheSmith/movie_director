@@ -9,5 +9,12 @@ class PenpalsController < ApplicationController
      @penpal = Penpal.find(params[:id])
      @letters = @penpal.letters_from_me(current_user)
     end
+
+    def new
+     @penpal = Penpal.new
+    end
+
+    def create
+    end
     
 end
