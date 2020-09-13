@@ -7,7 +7,7 @@
     <%= f.label :age %>:
     <%= f.text_field :age %><br />
 
-    <%= f.label :frequency, "Frequency you want letters sent to you" %>:
+    <%= f.label :frequency, "Frequency you want to receive letters" %>:
     <%= f.collection_select :frequency, ['Weekly', 'Monthly', 'Yearly'], :to_s, :to_s %><br />
 
     <%= f.label :interest_ids, "Interests (pick at least one)" %>:<br />

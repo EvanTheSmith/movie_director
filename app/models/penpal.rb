@@ -18,6 +18,10 @@ def self.by_penpal(penpal_id)
  where(id: penpal_id)
 end
 
+def self.all_alphabetically
+ all.sort_by(&:name)
+end
+
 def letters_from_me(me)
  letters.where(user: me)
 end

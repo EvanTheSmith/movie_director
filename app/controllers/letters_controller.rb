@@ -13,6 +13,7 @@ class LettersController < ApplicationController
     end
 
     def show
+     flash[:error] = nil
      @penpal = Penpal.find(params[:penpal_id])
      @letter = Letter.find(params[:id])
     end
