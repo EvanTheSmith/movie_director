@@ -7,8 +7,8 @@
     <%= f.label :age %>:
     <%= f.text_field :age %><br />
 
-    <%= f.label :frequency %>:
-    <%= f.collection_select :frequency, ['Daily', 'Weekly', 'Monthly', 'Yearly'], :to_s, :to_s %><br />
+    <%= f.label :frequency, "Frequency you want letters sent to you" %>:
+    <%= f.collection_select :frequency, ['Weekly', 'Monthly', 'Yearly'], :to_s, :to_s %><br />
 
     <%= f.label :interest_ids, "Interests (pick at least one)" %>:<br />
     <%= f.collection_check_boxes(:interest_ids, Interest.all, :id, :name) %><br />

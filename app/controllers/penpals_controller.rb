@@ -16,7 +16,13 @@ class PenpalsController < ApplicationController
 
     def create
     @penpal = Penpal.new(penpal_params)
-    byebug
+    if @penpal.save
+     redirect_to @penpal
+    else
+     flash_errors(@penpal)
+     render :new
+    end
+
     end
 
     private
