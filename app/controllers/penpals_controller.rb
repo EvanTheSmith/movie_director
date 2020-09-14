@@ -1,5 +1,6 @@
 class PenpalsController < ApplicationController
     before_action :must_be_logged_in
+    helper_method :check_for_params
 
     def index
      if !params[:interest].blank? && !params[:frequency].blank?
@@ -37,6 +38,12 @@ class PenpalsController < ApplicationController
 
     def penpal_params
     params.require(:penpal).permit(:first_name, :last_name, :age, :frequency, interest_ids:[])
+    end
+
+    # Helper Methods
+
+    def check_for_params
+     !params[:interest].blank? || !params[:frequency].blank?
     end
     
 end

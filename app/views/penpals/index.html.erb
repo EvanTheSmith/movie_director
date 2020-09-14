@@ -1,8 +1,8 @@
 <p>This page shows all penpals registered on our Web site.</p>
 
 <%= form_tag("/penpals", method: "get") do %>
-  <%= select_tag "interest", options_from_collection_for_select(Interest.all, "id", "name"), include_blank: "Interest" %>
-  <%= select_tag "frequency", options_for_select(['Weekly', 'Monthly', 'Yearly']), include_blank: "Frequency" %>
+  <%= select_tag "interest", options_from_collection_for_select(Interest.all, "id", "name", params[:interest]), include_blank: "Interest" %>
+  <%= select_tag "frequency", options_for_select(['Weekly', 'Monthly', 'Yearly'], params[:frequency]), include_blank: "Frequency" %>
   <%= submit_tag "Filter" %>
 <% end %>
 
@@ -19,5 +19,10 @@
   <p>No registered penpals meet the provided search criteria.</p>
   <% end %>
 <% end %>
+
+<% if check_for_params %>
+<%= form_for "/penpals", method: "get" do |f| %>
+  <%= f.submit "Reset Filter" %>
+<% end %><% end %>
 
 <p> <%= link_to "Register New Penpal", new_penpal_url %>
