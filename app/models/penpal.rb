@@ -16,19 +16,12 @@ def has_one_or_more_interests
  end
 end
 
-# Class Methods
+# Scope Methods
 
-def self.by_penpal(penpal_id)
- where(id: penpal_id)
-end
-
-def self.by_interest(int_id) # Scopes Penpals by an included interest
- joins(:interests).where(interests: {id: int_id})
-end
-
-def self.by_frequency(freq) # Scopes Penpals by frequency
- where(frequency: freq)
-end
+scope :alphabetically, -> { order(first_name: :asc) }
+scope :by_interest, -> (int_id) { joins(:interests).where(interests: {id: int_id}) }
+scope :by_frequency, -> (freq) { where(frequency: freq) }
+scope :by_penpal, -> (penpal_id) { where(id: penpal_id) }
 
 # Instance Methods
 

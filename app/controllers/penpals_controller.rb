@@ -3,15 +3,14 @@ class PenpalsController < ApplicationController
 
     def index
      if !params[:interest].blank? && !params[:frequency].blank?
-      @penpals = Penpal.by_interest(params[:interest]).by_frequency(params[:frequency])
+      @penpals = Penpal.by_interest(params[:interest]).by_frequency(params[:frequency]).alphabetically
      elsif !params[:interest].blank?
-      @penpals = Penpal.by_interest(params[:interest])
+      @penpals = Penpal.by_interest(params[:interest]).alphabetically
      elsif !params[:frequency].blank?
-      @penpals = Penpal.by_frequency(params[:frequency])
+      @penpals = Penpal.by_frequency(params[:frequency]).alphabetically
      else
-      @penpals = Penpal.all
+      @penpals = Penpal.alphabetically
      end
-
     end
 
     def show
@@ -26,13 +25,12 @@ class PenpalsController < ApplicationController
 
     def create
     @penpal = Penpal.new(penpal_params)
-    if @penpal.save
-     redirect_to @penpal
-    else
-     flash_errors(@penpal)
-     render :new
-    end
-
+     if @penpal.save
+      redirect_to @penpal
+     else
+      flash_errors(@penpal)
+      render :new
+     end
     end
 
     private
