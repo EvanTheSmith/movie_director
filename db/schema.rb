@@ -35,7 +35,8 @@ ActiveRecord::Schema.define(version: 2020_09_10_092756) do
   end
 
   create_table "penpals", force: :cascade do |t|
-    t.string "name"
+    t.string "first_name"
+    t.string "last_name"
     t.integer "age"
     t.string "frequency"
     t.datetime "created_at", precision: 6, null: false

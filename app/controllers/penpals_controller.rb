@@ -29,7 +29,7 @@ class PenpalsController < ApplicationController
     private
 
     def penpal_params
-    params.require(:penpal).permit(:name, :age, :frequency, interest_ids:[])
+    params.require(:penpal).permit(:first_name, :last_name, :age, :frequency, interest_ids:[])
     end
     
 end
