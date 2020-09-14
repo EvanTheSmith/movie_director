@@ -1,5 +1,10 @@
 <p>This page shows all penpals registered on our Web site.</p>
 
+<%= form_tag("/penpals", method: "get") do %>
+  <%= select_tag "interest", options_from_collection_for_select(Interest.all, "id", "name"), include_blank: "Interest" %>
+  <%= submit_tag "Filter" %>
+<% end %>
+
 <% unless @penpals.empty? %>
   <ul>
   <% @penpals.each do |penpal| %>

@@ -26,6 +26,10 @@ def self.all_alphabetically
  all.sort_by(&:name)
 end
 
+def self.by_interest(int_id)
+ joins(:interests).where(interests: {id: int_id})
+end
+
 # Instance Methods
 
 def display_interests
