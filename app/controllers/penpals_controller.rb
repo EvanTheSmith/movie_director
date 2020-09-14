@@ -2,11 +2,16 @@ class PenpalsController < ApplicationController
     before_action :must_be_logged_in
 
     def index
-     if !params[:interest].blank?
-     @penpals = Penpal.by_interest(params[:interest])
+     if !params[:interest].blank? && !params[:frequency].blank?
+      @penpals = Penpal.by_interest(params[:interest]).by_frequency(params[:frequency])
+     elsif !params[:interest].blank?
+      @penpals = Penpal.by_interest(params[:interest])
+     elsif !params[:frequency].blank?
+      @penpals = Penpal.by_frequency(params[:frequency])
      else
-     @penpals = Penpal.all_alphabetically
+      @penpals = Penpal.all
      end
+
     end
 
     def show

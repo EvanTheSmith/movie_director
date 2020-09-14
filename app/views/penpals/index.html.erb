@@ -2,6 +2,7 @@
 
 <%= form_tag("/penpals", method: "get") do %>
   <%= select_tag "interest", options_from_collection_for_select(Interest.all, "id", "name"), include_blank: "Interest" %>
+  <%= select_tag "frequency", options_for_select(['Weekly', 'Monthly', 'Yearly']), include_blank: "Frequency" %>
   <%= submit_tag "Filter" %>
 <% end %>
 
@@ -12,7 +13,11 @@
   <% end %>
   </ul>
 <% else %>
+  <% if Penpal.all.empty? %>
   <p>There are no registered penpals.</p>
+  <% else %>
+  <p>No registered penpals meet the provided search criteria.</p>
+  <% end %>
 <% end %>
 
 <p> <%= link_to "Register New Penpal", new_penpal_url %>

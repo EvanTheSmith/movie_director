@@ -1,4 +1,8 @@
+<% unless Letter.all.empty? %>
 <p> Currently viewing: <%= @index_message %> </p>
+<% else %>
+<p> You have not sent any letters.</p>
+<% end %>
 
 <% unless @penpals.empty? %>
   <ul>

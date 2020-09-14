@@ -22,12 +22,12 @@ def self.by_penpal(penpal_id)
  where(id: penpal_id)
 end
 
-def self.all_alphabetically
- all.sort_by(&:name)
+def self.by_interest(int_id) # Scopes Penpals by an included interest
+ joins(:interests).where(interests: {id: int_id})
 end
 
-def self.by_interest(int_id) # Sorts Penpals by having a shared interest
- joins(:interests).where(interests: {id: int_id})
+def self.by_frequency(freq) # Scopes Penpals by frequency
+ where(frequency: freq)
 end
 
 # Instance Methods

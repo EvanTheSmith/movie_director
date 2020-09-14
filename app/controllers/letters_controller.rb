@@ -9,6 +9,7 @@ class LettersController < ApplicationController
        @empty_message = "You have not sent any letters to #{Penpal.find(params[:penpal_id]).first_name}."
       else
        @penpals = current_user.penpals.uniq
+       @empty_message = "You have not sent any letters."
        @index_message = "all letters."
       end
     end
