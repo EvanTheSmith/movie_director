@@ -24,5 +24,6 @@
 <%= form_for "/penpals", method: "get" do |f| %>
   <%= f.submit "Reset Filter" %>
 <% end %><% end %>
+<br />
 
-<p> <%= link_to "Register New Penpal", new_penpal_url %>
+<%= link_to "Register New Penpal", new_penpal_url, class: "button" %>

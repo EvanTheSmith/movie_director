@@ -45,7 +45,6 @@
 }
 
 #navbar button {
-  
   font-size: 17px;
   float: right;
   color: white;
@@ -54,6 +53,14 @@
   padding: 9px;
   background-color: #333;
   margin-top: -28px;
+}
+
+.button {
+  padding:5px;
+  background-color: #dcdcdc;
+  border: 1px solid #666;
+  color:#000;
+  text-decoration: none;
 }
 
 #navbar li a:hover, #navbar button:hover {
