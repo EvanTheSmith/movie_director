@@ -70,14 +70,6 @@
     padding: 20px;
   }
 
-  .letter {
-    border: 2px dotted black;
-    text-align: center;
-    width: 250px;
-    margin: 10px auto;
-    padding: 20px;
-  }
-
   .fb_button {
     background-color: #4267B2;
     color: white;
@@ -103,4 +95,21 @@
 
   a:hover {
     text-decoration: underline;
+  }
+
+  .letter {
+    border: 3px outset;
+    text-align: center;
+    width: 400px;
+    margin: 10px auto;
+    padding: 20px;
+  }
+
+  .letter_left {
+    text-align: left;
+  }
+
+  .letter_right {
+    text-align: right;
+    font-size: 12px;
   }

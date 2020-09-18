@@ -9,7 +9,7 @@
   <% @penpals.each do |penpal| %>
   <li> Letters sent to <%= link_to penpal.name, penpal_letters_url(penpal) %></li>
     <% penpal.letters.each do |letter| %>
-    <li>Title: <%= link_to letter.title, penpal_letter_url(penpal, letter) %> </li>
+    <li>Greeting: <%= link_to letter.title, penpal_letter_url(penpal, letter) %> </li>
     <% end %>
   <% end %>
   </ul>
