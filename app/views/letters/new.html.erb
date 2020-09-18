@@ -1,4 +1,4 @@
-<p> Create a new leter for <%= @penpal.first_name %> :</p>
+<p> Create a new leter for <%= @penpal.first_name %>:</p>
 
 <%= form_for @letter, url: penpal_letters_path(@penpal.id) do |f| %>
     <%= f.hidden_field :penpal_id, :value => @penpal.id %>

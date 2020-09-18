@@ -1,18 +1,15 @@
-<% unless Letter.all.empty? %>
-<p> Currently viewing: <%= @index_message %> </p>
-<% else %>
-<p> You have not sent any letters.</p>
-<% end %>
-
 <% unless @penpals.empty? %>
-  <ul>
+
+<p> Currently viewing: <%= @index_message %> </p>
+<ul>
   <% @penpals.each do |penpal| %>
   <li> Letters sent to <%= link_to penpal.name, penpal_letters_url(penpal) %></li>
     <% penpal.letters.each do |letter| %>
     <li>Greeting: <%= link_to letter.title, penpal_letter_url(penpal, letter) %> </li>
     <% end %>
   <% end %>
-  </ul>
+</ul>
+
 <% else %>
   <p> <%= @empty_message %> </p>
 <% end %>

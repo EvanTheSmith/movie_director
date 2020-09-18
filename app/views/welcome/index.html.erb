@@ -1,10 +1,14 @@
 <div class="login_box">
 
 <% if logged_in? %>
-
-    <p>Welcome, <%= current_user.username %>.</p>
-    <p>Use the toolbar above to navigate the Web site.</p>
-
+ 
+    <% if current_user.penpals.count!=0 %>
+      <p>Welcome back, <%= current_user.username %>.</p>
+      <p>You have <%= current_user.penpals.uniq.count %> penpals.</p>
+    <% else %>
+      <p>Welcome to Elder Pals, <%= current_user.username %>.</p>
+      <p>To get started, navigate to our <%= link_to "Pen Pals", penpals_url %> section.</p>
+    <% end %>
 
 <% else %>
 
