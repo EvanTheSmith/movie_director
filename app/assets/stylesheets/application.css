@@ -14,6 +14,10 @@
  *= require_self
  */
 
+ body {
+  font-family: Arial;
+ }
+
  #wrapper {
    margin: 0 auto;
    width: 800px;
@@ -41,7 +45,7 @@
 }
 
 #navbar button {
-  font-family: 'Times New Roman';
+  
   font-size: 17px;
   float: right;
   color: white;
@@ -60,6 +64,14 @@
 
  .login_box {
     border: 2px solid black;
+    text-align: center;
+    width: 250px;
+    margin: 10px auto;
+    padding: 20px;
+  }
+
+  .letter {
+    border: 2px dotted black;
     text-align: center;
     width: 250px;
     margin: 10px auto;
@@ -86,6 +98,7 @@
   a {
     color: black;
     text-decoration: none;
+
   }
 
   a:hover {
