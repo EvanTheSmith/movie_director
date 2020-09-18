@@ -104,6 +104,10 @@
     text-decoration: underline;
   }
 
+  ul {
+    list-style-type: circle;
+  }
+
   .letter {
     border: 3px outset;
     text-align: center;

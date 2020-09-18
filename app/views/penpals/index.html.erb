@@ -1,5 +1,7 @@
-<p>This page shows all penpals registered on our Web site. Please use the filter to narrow down your 
+<p>This page shows all penpals registered on the Web site. Use the filter to narrow down your 
 search by interest and/or letter frequency (which is how often a penpal wants to receive letters from you).</p>
+
+<p>Penpals you have written letters to before are highlighted with an asterisk *</p>
 
 <%= form_tag("/penpals", method: "get") do %>
   <%= select_tag "interest", options_from_collection_for_select(Interest.all, "id", "name", params[:interest]), include_blank: "Interest" %>
@@ -10,7 +12,7 @@ search by interest and/or letter frequency (which is how often a penpal wants to
 <% unless @penpals.empty? %>
   <ul>
   <% @penpals.each do |penpal| %>
-  <li>Name: <%= link_to penpal.name, penpal %> </li>
+  <li> <%= link_to penpal.name, penpal %> <%= "*" if penpals?(penpal) %> </li>
   <% end %>
   </ul>
 <% else %>
