@@ -1,15 +1,15 @@
 <% unless @penpals.empty? %>
 
 <p> Currently viewing: <%= @index_message %> </p>
-<ul>
+<table>
   <% @penpals.each do |penpal| %>
-  <li> Letters sent to <%= link_to penpal.first_name, penpal_letters_url(penpal) %>:</li>
+  <tr><td id="t_penpal"> Letters sent to <%= link_to penpal.first_name, penpal_letters_url(penpal) %>:</td></tr>
     <% letters = penpal.letters.where(user: current_user) %>
     <% letters.each do |letter| %>
-    <li> <%= link_to letter.title, penpal_letter_url(penpal, letter) %> </li>
+    <tr> <td id="t_letter"> <%= link_to "● "+letter.title, penpal_letter_url(penpal, letter) %> </td></tr>
     <% end %>
   <% end %>
-</ul>
+</table>
 
 <% else %>
   <p> <%= @empty_message %> </p>
