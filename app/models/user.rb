@@ -6,6 +6,8 @@ validate :not_created_by_fb
 has_many :letters
 has_many :penpals, through: :letters
 
+# Instance Methods
+
 def not_created_by_fb
  user = User.find_by(:username => username)
  if user && user.fb_id
