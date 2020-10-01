@@ -22,6 +22,7 @@ scope :alphabetically, -> { order(first_name: :asc) }
 scope :by_interest, -> (int_id) { joins(:interests).where(interests: {id: int_id}) }
 scope :by_frequency, -> (freq) { where(frequency: freq) }
 scope :by_penpal, -> (penpal_id) { where(id: penpal_id) }
+scope :by_created, -> { order(created_at: :asc) }
 
 # Instance Methods
 
