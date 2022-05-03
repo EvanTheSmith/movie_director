@@ -7,10 +7,12 @@ Using this app, users can write to "virtual penpals" using a simple, on-screen i
 ## Installation
 
 Simply enter "bundle install" into your terminal to install all relevant gems.
+It may also be necessary to use "yarn install" after.
 
 ## Usage
 
-Enter "rails s" into your terminal to launch the web app. Then use the toolbar and on screen instructions to setup an account, send letters to penpals, and navigate around the site.
+Enter "rails s" into your terminal to launch the web app. If your browser does not automatically open, navigate to LocalHost:3000
+hen use the toolbar and on screen instructions to setup an account, send letters to penpals, and navigate around the site.
 
 ## Contributing
 
